@@ -90,11 +90,13 @@ export const updateMovie: RequestHandler = async (
   res: Response
 ) => {
   try {
+    const { id } = req.params;
+    const { title, genre, rating, year }: movieType = req.body;
+
     const updatedMovie = await Movies.findByIdAndUpdate(
-      (req.params.id, req.body),
-      {
-        new: true,
-      }
+      id,
+      { title, genre, rating, year },
+      { new: true }
     );
     res.status(200).json({
       message: "movie updated",
