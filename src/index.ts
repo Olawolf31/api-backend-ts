@@ -20,7 +20,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
     res.send("Hello World");
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server on port ${PORT}`);
-    connectDB();
+    await connectDB();
 })
